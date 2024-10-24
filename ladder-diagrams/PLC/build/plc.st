@@ -43,6 +43,7 @@ PROGRAM program0
     HealthDisplay : BOOL;
     CloseEntryGate : BOOL;
     LightSensor : INT := 100;
+    SetLight : BOOL;
     RainSensor : BOOL;
     SnowSensor : BOOL;
     ClearWeather : BOOL;
