@@ -42,8 +42,7 @@ PROGRAM program0
     AlarmActivate : BOOL;
     HealthDisplay : BOOL;
     CloseEntryGate : BOOL;
-    LightSensor : BOOL;
-    SetLight : BOOL;
+    LightSensor : INT := 100;
     RainSensor : BOOL;
     SnowSensor : BOOL;
     ClearWeather : BOOL;
@@ -70,6 +69,8 @@ PROGRAM program0
     ExitGateCloses : BOOL;
   END_VAR
   VAR
+    LightSensorCondition : INT := 10;
+    _TMP_LE61_OUT : BOOL;
     _TMP_GT41_OUT : BOOL;
   END_VAR
 
@@ -82,7 +83,8 @@ PROGRAM program0
   AlarmActivate := AlarmButton;
   AlarmActivate := LicensePlateVerification;
   HealthDisplay := TempSensor;
-  LightControl := LightSensor;
+  _TMP_LE61_OUT := LE(LightSensor, LightSensorCondition);
+  LightControl := _TMP_LE61_OUT;
   RainSignage := RainSensor;
   SnowSignage := SnowSensor;
   ClearSignage := ClearWeather;
