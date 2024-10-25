@@ -24,9 +24,13 @@ END_FUNCTION_BLOCK
 PROGRAM program0
   VAR
     EntranceGateSensor : BOOL;
-    ticketValidation : BOOL;
-    PhysicalCard : BOOL;
-    PermitCard : BOOL;
+    EntranceGateSensor0 : BOOL;
+    ticketValidationEnter : BOOL;
+    ticketValidationExit : BOOL;
+    PhysicalCardEnter : BOOL;
+    PhysicalCardExit : BOOL;
+    PermitCardEnter : BOOL;
+    PermitCardExit : BOOL;
     openSpotSensor : BOOL;
     countSensor : BOOL;
     overstayNotification : BOOL;
@@ -75,10 +79,10 @@ PROGRAM program0
     _TMP_GT41_OUT : BOOL;
   END_VAR
 
-  OpenEntryGate := (PermitCard OR PhysicalCard OR ticketValidation) AND EntranceGateSensor;
+  OpenEntryGate := (PermitCardEnter OR PhysicalCardEnter OR ticketValidationEnter) AND EntranceGateSensor;
   CloseEntryGate := EntrancePassThrough;
-  OverstaySignage := overstayNotification AND ticketValidation;
-  LicensePlateCapture := ticketValidation AND EntranceGateSensor AND PhysicalCard AND EntranceGateSensor AND PermitCard AND EntranceGateSensor;
+  OverstaySignage := overstayNotification AND ticketValidationEnter;
+  LicensePlateCapture := ticketValidationEnter AND EntranceGateSensor AND PhysicalCardEnter AND EntranceGateSensor AND PermitCardEnter AND EntranceGateSensor;
   AvailableSpotSignage := openSpotSensor;
   parkingLED := countSensor AND AvailableSpotSignage;
   AlarmActivate := AlarmButton;
@@ -94,10 +98,10 @@ PROGRAM program0
   overstayNotification := ParkingDurationStatus;
   EVChargerActivation := EVSensorStatus;
   LicensePlateCapture := ExitSensor;
-  ExitGateOpens := (PermitCard OR PhysicalCard) AND ExitSensor;
+  ExitGateOpens := (PermitCardExit OR PhysicalCardExit) AND ExitSensor;
   ExitGateCloses := ExitPassThroughSensor;
-  TicketValidationSensor := ticketValidation;
-  PaymentMachineDisplay := ticketValidation;
+  TicketValidationSensor := ticketValidationExit;
+  PaymentMachineDisplay := ticketValidationExit;
   ExitGateOpens := PaymentMachineDisplay;
 END_PROGRAM
 

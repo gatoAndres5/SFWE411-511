@@ -1,9 +1,13 @@
 PROGRAM program0
   VAR
     EntranceGateSensor AT %IX0.0 : BOOL;
-    ticketValidation AT %IX0.2 : BOOL;
-    PhysicalCard AT %IX0.3 : BOOL;
-    PermitCard AT %IX0.7 : BOOL;
+    EntranceGateSensor0 AT %IX0.1 : BOOL;
+    ticketValidationEnter AT %IX0.2 : BOOL;
+    ticketValidationExit AT %IX2.4 : BOOL;
+    PhysicalCardEnter AT %IX0.3 : BOOL;
+    PhysicalCardExit AT %IX2.5 : BOOL;
+    PermitCardEnter AT %IX0.7 : BOOL;
+    PermitCardExit AT %IX2.6 : BOOL;
     openSpotSensor AT %IX1.1 : BOOL;
     countSensor AT %IX0.6 : BOOL;
     overstayNotification AT %IX0.5 : BOOL;
@@ -52,10 +56,10 @@ PROGRAM program0
     _TMP_GT41_OUT : BOOL;
   END_VAR
 
-  OpenEntryGate := (PermitCard OR PhysicalCard OR ticketValidation) AND EntranceGateSensor;
+  OpenEntryGate := (PermitCardEnter OR PhysicalCardEnter OR ticketValidationEnter) AND EntranceGateSensor;
   CloseEntryGate := EntrancePassThrough;
-  OverstaySignage := overstayNotification AND ticketValidation;
-  LicensePlateCapture := ticketValidation AND EntranceGateSensor AND PhysicalCard AND EntranceGateSensor AND PermitCard AND EntranceGateSensor;
+  OverstaySignage := overstayNotification AND ticketValidationEnter;
+  LicensePlateCapture := ticketValidationEnter AND EntranceGateSensor AND PhysicalCardEnter AND EntranceGateSensor AND PermitCardEnter AND EntranceGateSensor;
   AvailableSpotSignage := openSpotSensor;
   parkingLED := countSensor AND AvailableSpotSignage;
   AlarmActivate := AlarmButton;
@@ -71,10 +75,10 @@ PROGRAM program0
   overstayNotification := ParkingDurationStatus;
   EVChargerActivation := EVSensorStatus;
   LicensePlateCapture := ExitSensor;
-  ExitGateOpens := (PermitCard OR PhysicalCard) AND ExitSensor;
+  ExitGateOpens := (PermitCardExit OR PhysicalCardExit) AND ExitSensor;
   ExitGateCloses := ExitPassThroughSensor;
-  TicketValidationSensor := ticketValidation;
-  PaymentMachineDisplay := ticketValidation;
+  TicketValidationSensor := ticketValidationExit;
+  PaymentMachineDisplay := ticketValidationExit;
   ExitGateOpens := PaymentMachineDisplay;
 END_PROGRAM
 

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2024-10-20T18:38:46"/>
-  <contentHeader name="Unnamed" modificationDateTime="2024-10-23T21:37:44">
+  <contentHeader name="Unnamed" modificationDateTime="2024-10-24T23:20:38">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -25,17 +25,37 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="ticketValidation" address="%IX0.2">
+            <variable name="EntranceGateSensor0" address="%IX0.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="PhysicalCard" address="%IX0.3">
+            <variable name="ticketValidationEnter" address="%IX0.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="PermitCard" address="%IX0.7">
+            <variable name="ticketValidationExit" address="%IX2.4">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PhysicalCardEnter" address="%IX0.3">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PhysicalCardExit" address="%IX2.5">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PermitCardEnter" address="%IX0.7">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="PermitCardExit" address="%IX2.6">
               <type>
                 <BOOL/>
               </type>
@@ -75,7 +95,7 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="LicensePlateVerification" address="%IX7.1">
+            <variable name="LicensePlateVerification" address="%IX5.1">
               <type>
                 <BOOL/>
               </type>
@@ -85,12 +105,12 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="AlarmButton" address="%IX7.0">
+            <variable name="AlarmButton" address="%IX5.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="TempSensor" address="%IX8.0">
+            <variable name="TempSensor" address="%IX6.0">
               <type>
                 <BOOL/>
               </type>
@@ -100,12 +120,12 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="AlarmActivate" address="%QX7.0">
+            <variable name="AlarmActivate" address="%QX5.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="HealthDisplay" address="%QX8.0">
+            <variable name="HealthDisplay" address="%QX6.0">
               <type>
                 <BOOL/>
               </type>
@@ -115,7 +135,7 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="LightSensor" address="%IW4.0">
+            <variable name="LightSensor" address="%IW2.0">
               <type>
                 <INT/>
               </type>
@@ -123,42 +143,42 @@
                 <simpleValue value="100"/>
               </initialValue>
             </variable>
-            <variable name="SetLight" address="%IX4.4">
+            <variable name="SetLight" address="%IX2.4">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="RainSensor" address="%IX4.1">
+            <variable name="RainSensor" address="%IX2.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="SnowSensor" address="%IX4.2">
+            <variable name="SnowSensor" address="%IX2.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="ClearWeather" address="%IX4.3">
+            <variable name="ClearWeather" address="%IX2.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="LightControl" address="%QX4.0">
+            <variable name="LightControl" address="%QX2.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="RainSignage" address="%QX4.1">
+            <variable name="RainSignage" address="%QX2.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="SnowSignage" address="%QX4.2">
+            <variable name="SnowSignage" address="%QX2.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="ClearSignage" address="%QX4.3">
+            <variable name="ClearSignage" address="%QX2.3">
               <type>
                 <BOOL/>
               </type>
@@ -180,32 +200,32 @@
             </variable>
           </localVars>
           <localVars>
-            <variable name="ParkingDurationStatus" address="%QX5.0">
+            <variable name="ParkingDurationStatus" address="%QX3.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="OverstayDetector" address="%IX5.1">
+            <variable name="OverstayDetector" address="%IX3.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="TicketValidationSensor" address="%QX5.2">
+            <variable name="TicketValidationSensor" address="%QX3.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="PaymentMachineDisplay" address="%QX5.3">
+            <variable name="PaymentMachineDisplay" address="%QX3.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="EVSensorStatus" address="%IX6.0">
+            <variable name="EVSensorStatus" address="%IX4.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="EVChargerActivation" address="%QX6.0">
+            <variable name="EVChargerActivation" address="%QX4.0">
               <type>
                 <BOOL/>
               </type>
@@ -341,7 +361,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>ticketValidation</variable>
+              <variable>ticketValidationEnter</variable>
             </contact>
             <contact localId="4" negated="false" width="21" height="20">
               <position x="530" y="100"/>
@@ -357,7 +377,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>PhysicalCard</variable>
+              <variable>PhysicalCardEnter</variable>
             </contact>
             <contact localId="5" negated="false" width="21" height="20">
               <position x="530" y="140"/>
@@ -373,7 +393,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>PermitCard</variable>
+              <variable>PermitCardEnter</variable>
             </contact>
             <rightPowerRail localId="8" width="290" height="3060">
               <position x="1030" y="40"/>
@@ -673,7 +693,7 @@
               <connectionPointOut>
                 <relPosition x="30" y="10"/>
               </connectionPointOut>
-              <variable>ticketValidation</variable>
+              <variable>ticketValidationEnter</variable>
             </contact>
             <contact localId="22" negated="false" width="30" height="20">
               <position x="420" y="510"/>
@@ -1126,7 +1146,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>PhysicalCard</variable>
+              <variable>PhysicalCardExit</variable>
             </contact>
             <contact localId="16" negated="false" width="21" height="20" executionOrderId="0">
               <position x="570" y="2530"/>
@@ -1142,7 +1162,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>PermitCard</variable>
+              <variable>PermitCardExit</variable>
             </contact>
             <coil localId="58" negated="false" width="21" height="20">
               <position x="820" y="2500"/>
@@ -1192,7 +1212,7 @@
               <connectionPointOut>
                 <relPosition x="30" y="10"/>
               </connectionPointOut>
-              <variable>ticketValidation</variable>
+              <variable>ticketValidationExit</variable>
             </contact>
             <contact localId="49" negated="false" width="30" height="20" executionOrderId="0">
               <position x="430" y="2790"/>
@@ -1206,7 +1226,7 @@
               <connectionPointOut>
                 <relPosition x="30" y="10"/>
               </connectionPointOut>
-              <variable>ticketValidation</variable>
+              <variable>ticketValidationExit</variable>
             </contact>
             <coil localId="50" negated="false" width="21" height="20" executionOrderId="0">
               <position x="810" y="2640"/>
