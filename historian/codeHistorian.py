@@ -35,9 +35,10 @@ def parse_address(address):
     """
     Parse Modbus address string to retrieve base address and offset.
     """
-    base_address = int(address[3:5])  # Extract base address from %QX0.5 or %QX4.0
-    offset = int(address[6])         # Extract bit offset
+    base_address = int(address[3:].split('.')[0])  # Extract base address before the period
+    offset = int(address.split('.')[1])           # Extract bit offset after the period
     return base_address, offset
+
 
 # Read coils and write results to a CSV file
 def read_output_coils_to_csv(output_file):

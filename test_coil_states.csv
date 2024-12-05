@@ -1,0 +1,5 @@
+Description,Address,State
+Overstay Notification,%QX0.5,OFF
+Open Entry Gate,%QX0.6,ON
+Light Control (Light_ON),%QX4.0,ON
+Exit Gate Opens,%QX0.4,ON
