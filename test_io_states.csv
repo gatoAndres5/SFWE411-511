@@ -1,0 +1,43 @@
+Description,Address,State
+Overstay Notification,%QX0.5,OFF
+Open Entry Gate,%QX0.6,ON
+Light Control (Light_ON),%QX4.0,ON
+Exit Gate Opens,%QX0.4,ON
+Exit Gate Closes,%QX0.9,OFF
+Signage Rain,%QX2.1,OFF
+Signage Snow,%QX2.2,ON
+Signage Clear,%QX2.3,OFF
+Parking Duration Status,%QX3.0,ON
+EV Charger Activation,%QX6.0,ON
+Ticket Validation Sensor,%QX5.2,ON
+Parking Space LED Indicator,%QX0.7,OFF
+HMI Entry Display Trigger,%QX7.0,ON
+Overstay Penalty Indicator,%QX7.1,OFF
+Alarm Status Indicator,%QX7.3,OFF
+Lightning Status Display,%QX7.5,OFF
+Exit Event Display,%QX8.0,ON
+System Health Check Display,%QX8.2,ON
+Manual Override Gate,%QX8.3,OFF
+Manual Override Alarm,%QX8.4,ON
+Manual Override Light,%QX8.5,OFF
+Status Sync Trigger,%QX8.7,OFF
+Maintenance Mode Display,%QX9.0,ON
+Entrance Gate Sensor,%IX0.0,OFF
+Entrance Gate Sensor 0,%IX0.1,ON
+Ticket Validation Enter,%IX0.2,OFF
+Ticket Validation Exit,%IX0.4,OFF
+Physical Card Enter,%IX0.3,ON
+Physical Card Exit,%IX0.5,ON
+Permit Card Enter,%IX0.6,OFF
+Permit Card Exit,%IX1.1,ON
+Open Spot Sensor,%IX1.0,OFF
+Count Sensor,%IX1.1,ON
+License Plate Capture,%IX1.0,OFF
+License Plate Verification,%IX5.1,ON
+Entrance Pass Through,%IX0.8,OFF
+Alarm Button,%IX5.0,OFF
+Light Sensor Condition,%IW2.0,OFF
+Rain Sensor,%IX2.1,ON
+Snow Sensor,%IX2.2,OFF
+Exit Sensor,%IX0.4,OFF
+Exit Pass Through Sensor,%IX0.8,OFF
