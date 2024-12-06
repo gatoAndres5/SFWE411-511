@@ -50,8 +50,11 @@ def read_output_coils_to_csv(output_file):
 
             for description, address in output_coil_addresses.items():
                 base_address, offset = parse_address(address)
-                result = client.read_coils(base_address, count=1)
-                if not result.isError():
+                
+                # Increase count to cover the highest offset for this base address
+                result = client.read_coils(base_address, count=offset + 1)
+                
+                if not result.isError() and offset < len(result.bits):  # Check bounds
                     value = result.bits[offset]
                     state = 'ON' if value else 'OFF'
                     csv_writer.writerow([description, address, state])
@@ -62,6 +65,7 @@ def read_output_coils_to_csv(output_file):
         print(f"Coil states written to {output_file}")
     else:
         print("Failed to connect to Modbus server")
+
 
 if __name__ == '__main__':
     output_csv_file = 'coil_states.csv'  # Specify the output CSV file name
