@@ -36,8 +36,11 @@ class TestModbusIO(unittest.TestCase):
         # Output file name
         test_csv = 'test_io_states.csv'
 
-        # Run the function
-        read_modbus_addresses_to_csv(test_csv)
+        # Set a default duration for the test
+        duration = 5  # or whatever duration you expect
+
+        # Run the function with the duration argument
+        read_modbus_addresses_to_csv(test_csv, duration)
 
         # Check if the file is created
         self.assertTrue(os.path.exists(test_csv))
@@ -62,8 +65,6 @@ class TestModbusIO(unittest.TestCase):
             base_address, offset = parse_address(address)
             expected_state = 'ON' if mock_read_discrete_inputs.return_value.bits[offset] else 'OFF'
             self.assertIn(f'{description},{address},{expected_state}', lines[input_start_index + i].strip())
-
-        
 
         # Verify that client methods were called
         mock_connect.assert_called_once()

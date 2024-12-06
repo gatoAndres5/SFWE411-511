@@ -1,5 +1,6 @@
 import csv
 from pymodbus.client import ModbusTcpClient
+import time
 
 # Define Modbus client
 client = ModbusTcpClient('127.0.0.1', port=502)  # Replace with your Modbus server IP and port
@@ -88,18 +89,22 @@ def read_addresses_to_csv(addresses, address_type, csv_writer):
             csv_writer.writerow([description, address, 'READ ERROR'])
 
 # Read coils and inputs, and write results to a CSV file
-def read_modbus_addresses_to_csv(output_file):
+def read_modbus_addresses_to_csv(output_file, duration):
     if client.connect():
         print("Connected to Modbus server")
+        start_time = time.time()
         with open(output_file, mode='w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow(['Description', 'Address', 'State'])  # Write header row
 
-            # Read output coils
-            read_addresses_to_csv(output_coil_addresses, 'coil', csv_writer)
-            
-            # Read input addresses
-            read_addresses_to_csv(input_addresses, 'input', csv_writer)
+            while time.time() - start_time < duration:
+                # Read output coils
+                read_addresses_to_csv(output_coil_addresses, 'coil', csv_writer)
+                
+                # Read input addresses
+                read_addresses_to_csv(input_addresses, 'input', csv_writer)
+                # Add a small delay to avoid overwhelming the server
+                time.sleep(1)
 
         client.close()
         print(f"Modbus states written to {output_file}")
@@ -108,4 +113,5 @@ def read_modbus_addresses_to_csv(output_file):
 
 if __name__ == '__main__':
     output_csv_file = 'modbus_states.csv'  # Specify the output CSV file name
-    read_modbus_addresses_to_csv(output_csv_file)
+    duration_seconds = 10  # Run for 10 seconds
+    read_modbus_addresses_to_csv(output_csv_file, duration_seconds)
