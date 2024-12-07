@@ -37,7 +37,7 @@ class TestModbusIO(unittest.TestCase):
         test_csv = 'test_io_states.csv'
 
         # Set a default duration for the test
-        duration = 5  # or whatever duration you expect
+        duration = 15  # or whatever duration you expect
 
         # Run the function with the duration argument
         read_modbus_addresses_to_csv(test_csv, duration)

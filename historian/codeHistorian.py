@@ -96,15 +96,20 @@ def read_modbus_addresses_to_csv(output_file, duration):
         with open(output_file, mode='w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow(['Description', 'Address', 'State'])  # Write header row
+            # Initial read of coils and inputs
+            read_addresses_to_csv(output_coil_addresses, 'coil', csv_writer)
+            read_addresses_to_csv(input_addresses, 'input', csv_writer)
 
             while time.time() - start_time < duration:
-                # Read output coils
+                # Read output coils and input addresses every 5 seconds
                 read_addresses_to_csv(output_coil_addresses, 'coil', csv_writer)
-                
-                # Read input addresses
                 read_addresses_to_csv(input_addresses, 'input', csv_writer)
-                # Add a small delay to avoid overwhelming the server
-                time.sleep(1)
+
+                # Add a separator row to indicate 5 seconds have passed
+                csv_writer.writerow(['---', '60 Seconds Passed', '---'])
+
+                # Add a small delay (5 seconds) before the next reading
+                time.sleep(60)
 
         client.close()
         print(f"Modbus states written to {output_file}")
@@ -113,5 +118,5 @@ def read_modbus_addresses_to_csv(output_file, duration):
 
 if __name__ == '__main__':
     output_csv_file = 'modbus_states.csv'  # Specify the output CSV file name
-    duration_seconds = 10  # Run for 10 seconds
+    duration_seconds = 200  # Run for 60 seconds as an example
     read_modbus_addresses_to_csv(output_csv_file, duration_seconds)
