@@ -3,7 +3,7 @@ from pymodbus.client import ModbusTcpClient
 import time
 
 # Define Modbus client
-client = ModbusTcpClient('127.0.0.1', port=502)  # Replace with your Modbus server IP and port
+client = ModbusTcpClient('127.0.0.1', port=502)  #Modbus server IP and port
 
 # Define output coil addresses and descriptions
 output_coil_addresses = {
